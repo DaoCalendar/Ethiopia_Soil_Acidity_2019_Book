@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Methods | Estimating Acid Soil Effects on Cereal Crop Productivity in Ethiopia: A Digital Handbook</title>
+  <meta name="description" content="Chapter 3 Methods | Estimating Acid Soil Effects on Cereal Crop Productivity in Ethiopia: A Digital Handbook" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Methods | Estimating Acid Soil Effects on Cereal Crop Productivity in Ethiopia: A Digital Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Methods | Estimating Acid Soil Effects on Cereal Crop Productivity in Ethiopia: A Digital Handbook" />
+  
+  
+  
+
+<meta name="author" content="Michael Mann, James Warner, Chilot Tizale, Jordan Chamberlin" />
+
+
+<meta name="date" content="2020-01-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data.html"/>
+<link rel="next" href="findings.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.0.0/tabwid.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Estimating acid soil effects on cereal crop productivity in Ethiopia: Digital Handbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Index</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data Sources</a><ul>
+<li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#survey-data---agricultural-sample-survey-data-2010-2016"><i class="fa fa-check"></i><b>2.1</b> Survey Data - Agricultural Sample Survey Data (2010-2016)</a></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#edaphic-properties"><i class="fa fa-check"></i><b>2.2</b> Edaphic Properties</a></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#remotely-sensed-variables"><i class="fa fa-check"></i><b>2.3</b> Remotely Sensed Variables</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data.html"><a href="data.html#variable-definitions"><i class="fa fa-check"></i><b>2.3.1</b> Variable Definitions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a><ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#regression-strategy"><i class="fa fa-check"></i><b>3.1</b> Regression Strategy</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#gams"><i class="fa fa-check"></i><b>3.2</b> GAMS Tutorial</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#setting-up-the-problem"><i class="fa fa-check"></i><b>3.2.1</b> Setting up the problem</a></li>
+<li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#running-the-analysis"><i class="fa fa-check"></i><b>3.2.2</b> Running the Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#present-value-of-interventions"><i class="fa fa-check"></i><b>3.3</b> Present Value of Interventions</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#current-cost-of-future-lime-and-fertilizer-expenditures"><i class="fa fa-check"></i><b>3.3.1</b> Current Cost of Future Lime and Fertilizer Expenditures</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="findings.html"><a href="findings.html"><i class="fa fa-check"></i><b>4</b> Findings</a><ul>
+<li class="chapter" data-level="4.1" data-path="findings.html"><a href="findings.html#national-estimates"><i class="fa fa-check"></i><b>4.1</b> National Estimates</a></li>
+<li class="chapter" data-level="4.2" data-path="findings.html"><a href="findings.html#region"><i class="fa fa-check"></i><b>4.2</b> Regional Estimates</a></li>
+<li class="chapter" data-level="4.3" data-path="findings.html"><a href="findings.html#local"><i class="fa fa-check"></i><b>4.3</b> Local Estimates</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conclusions.html"><a href="conclusions.html"><i class="fa fa-check"></i><b>5</b> Conclusions</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estimating Acid Soil Effects on Cereal Crop Productivity in Ethiopia: A Digital Handbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methods" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Methods</h1>
+<p>In order to examine the marginal effect of wheat output per hectare to soil acidity, we need to control for the effects of other variables such as water availability, soil properties, elevation, and management difference amongst others. To do this we will run a fixed effects regression on all sub-kebeles for 2010-2016 with year and agricultural zone fixed effects. This regression allows us to examine how a one unit increase in fertilizer or pH effects wheat yields while controlling for other potential determinants of productivity.</p>
+<div id="regression-strategy" class="section level2">
+<h2><span class="header-section-number">3.1</span> Regression Strategy</h2>
+<p>To control for the highly non-linear nature of some of these relationships, most variables of interest are applied with cubic regression splines within a Generalized Additive Model (GAM) <span class="citation">(Wood <a href="#ref-wood2017generalized">2017</a>)</span>. These have a cubic spline basis defined by a modest sized set of knots spread evenly through the co-variate values. They are penalized by the conventional integrated square second derivative cubic spline penalty, and will be denoted with s(,n) where n is the degree.</p>
+<p>GAMs models are a simple extension of polynomial regression and generalized linear models (GLM). The primary difference between polynomial regression and GAMs is that GAMs uses smoothed functions for at least some of our covariates (X), as represented here by <span class="math inline">\(f(x)\)</span>. This simple addition will allow for a non-linear relationship between X and y, without imposing a functional form a priori (for instance a squared polynomial, or log-linear). This has a number of critical benefits, most importantly, the non-linear form in GAMs should match that of the underlying data generating process, this in turn provides more accurate estimates of marginal effects and better accuracy in out-of-sample prediction.</p>
+<p>GAMs models take a familiar functional form:</p>
+<p><span class="math display">\[y = b_0 + X  +f(x_1)+...+f(x_p)+ \epsilon\]</span></p>
+<p>Where <span class="math inline">\(y\)</span> is our target variable, <span class="math inline">\(b_0\)</span> is the intercept, <span class="math inline">\(X\)</span> is a vector of linear covariates, <span class="math inline">\(f(x_p)\)</span> defines some basis of non-linear functions, and <span class="math inline">\(\epsilon\)</span> is the error term. This basis can simply be a polynomial one, for instance:</p>
+<p><span class="math display">\[f(x) = \gamma_0+\gamma_1x^1+\gamma_2x^2+...+\gamma_nx^n+\epsilon\]</span></p>
+<p>In this paper, we use a cubic spline basis to capture non-linear terms:</p>
+<p><span class="math display">\[f(x) = \sum_{j=1}^{n}\beta_j(x)\gamma_j+\epsilon \]</span></p>
+<p>Where <span class="math inline">\(\beta_j\)</span> cubic spline basis function. Estimation is carried out by penalized maximum likelihood, where there is a penalty for over-fitting (creating wiggly lines) the data.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> Overall, GAMs provides a simple extension to typical modeling approaches that more meaningfully captures non-linear relationships, and increases model accuracy.</p>
+</div>
+<div id="gams" class="section level2">
+<h2><span class="header-section-number">3.2</span> GAMS Tutorial</h2>
+<div id="setting-up-the-problem" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Setting up the problem</h3>
+<p>Lets try a simple example. First, let’s create a data frame and fill it with some simulated data with an obvious non-linear trend and compare how well some models fit to that data. The following example is pulled from <a href="http://environmentalcomputing.net/intro-to-gams/">here</a>.</p>
+<p><img src="Ethiopia_Soil_Acidity_2019_Book_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Try fitting a normal linear model:</p>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x, data = Sample_data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.10544 -0.37447  0.00279  0.39554  1.36520 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   0.9319     0.1297   7.183 1.12e-09 ***
+## x            -0.2752     0.0361  -7.622 1.97e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.521 on 61 degrees of freedom
+## Multiple R-squared:  0.4878, Adjusted R-squared:  0.4794 
+## F-statistic:  58.1 on 1 and 61 DF,  p-value: 1.967e-10</code></pre>
+<p>and plotting the fitted line with data using geom_smooth in ggplot</p>
+<p><img src="Ethiopia_Soil_Acidity_2019_Book_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Looking at the plot or summary(lm_y), you might think the model fits nicely, but look at the residual plot – eek!</p>
+<p><img src="Ethiopia_Soil_Acidity_2019_Book_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Clearly, the residuals are not evenly spread across values of <span class="math inline">\(x\)</span>, and we need to consider a better model.</p>
+</div>
+<div id="running-the-analysis" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Running the Analysis</h3>
+<p>Before we consider a GAM, we need to load the package <code>mgcv</code> – the choice for running GAMs in R.</p>
+<p>To run a GAM, we use:</p>
+<p>To extract the fitted values, we can use <code>predict</code> just like normal:</p>
+<p>But for simple models, we can also utilise the <code>method =</code> argument in <code>geom_smooth</code>, specifying the model formula.</p>
+<p><img src="Ethiopia_Soil_Acidity_2019_Book_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>You can see the model is better fit to the data, but always check the diagnostics.
+<code>check.gam</code> is quick and easy to view the residual plots.</p>
+<p><img src="Ethiopia_Soil_Acidity_2019_Book_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre><code>## 
+## Method: REML   Optimizer: outer newton
+## full convergence after 6 iterations.
+## Gradient range [-9.46585e-11,7.029666e-11]
+## (score 29.99931 &amp; scale 0.1111844).
+## Hessian positive definite, eigenvalue range [2.124096,30.68672].
+## Model rank =  10 / 10 
+## 
+## Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
+## indicate that k is too low, especially if edf is close to k&#39;.
+## 
+##       k&#39; edf k-index p-value
+## s(x) 9.0 5.6    1.11    0.77</code></pre>
+<p>Using <code>summary</code> with the model object will give you the significance of the smooth term (along with any parametric terms, if you’ve included them), along with the variance explained. In this example, a pretty decent fit. The ‘edf’ is the estimated degrees of freedom – essentially, the larger the number, the more wiggly the fitted model. Values of around 1 tend to be close to a linear term. You can read about penalisation and shrinkage for more on what the edf reflects.</p>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## y ~ s(x)
+## 
+## Parametric coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  0.07893    0.04201   1.879   0.0655 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Approximate significance of smooth terms:
+##        edf Ref.df     F p-value    
+## s(x) 5.604  6.752 33.98  &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## R-sq.(adj) =  0.787   Deviance explained = 80.6%
+## -REML = 29.999  Scale est. = 0.11118   n = 63</code></pre>
+</div>
+</div>
+<div id="present-value-of-interventions" class="section level2">
+<h2><span class="header-section-number">3.3</span> Present Value of Interventions</h2>
+<p>To calculate the total costs and benefits of lime and chemical fertilizers it is critical to note that fertilizers require annual applications, while lime is only applied once every 5 years. Fertilizer applications therefore need to be thought of as a repeated costs over a five year period, the present value of these costs therefore must be calculated.</p>
+<div id="current-cost-of-future-lime-and-fertilizer-expenditures" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Current Cost of Future Lime and Fertilizer Expenditures</h3>
+<p>The present value of a future cost can be calculated using a few pieces of information: 1) the cost paid each year, 2) the discount rate, and whether or not the cost is incurred at the beginning or end of the year. Here we assume that that annual costs of fertilizer remain constant at 15 birr per kilogram. Fertilizers will be applied at a rate equal to the estimated yield benefits of a single lime application. We also assume a discount rate of 15%, which accounts for the typical rate of return of an alternative investment, and we assume the costs are incurred at the beginning of each planting season.</p>
+<p>The present value (cost) of a series of future expenditures is as follows:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math display">\[\ PV=\sum_{t=0}^{T}FV \frac{1}{(1+i)^t}\]</span></li>
+</ol>
+<p>In this case, PV is the present value of future expenditures, FV is the annual cost of fertilizer, <em>i</em> is the discount rate, and <em>T</em> is the number of years payments are made. As such we can estimate the present value of applications of lime and fertilizer required to obtain the same yield increase (qq/ha) in wheat yields estimated above.</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-wood2017generalized">
+<p>Wood, Simon N. 2017. <em>Generalized Additive Models: An Introduction with R</em>. Chapman; Hall/CRC.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>A good description of GAMs and their relationship with OLS and non-linear regression can be found here: <a href="https://m-clark.github.io/generalized-additive-models/introduction.html" class="uri">https://m-clark.github.io/generalized-additive-models/introduction.html</a><a href="methods.html#fnref4" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="findings.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Ethiopia_Soil_Acidity_2019_Book.pdf", "Ethiopia_Soil_Acidity_2019_Book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

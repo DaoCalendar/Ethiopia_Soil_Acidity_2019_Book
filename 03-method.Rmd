@@ -1,0 +1,156 @@
+# Methods {#methods}
+
+
+In order to examine the marginal effect of wheat output per hectare to soil acidity, we need to control for the effects of other variables such as water availability, soil properties, elevation, and management difference amongst others. To do this we will run a fixed effects regression on all sub-kebeles for 2010-2016 with year and agricultural zone fixed effects. This regression allows us to examine how a one unit increase in fertilizer or pH effects wheat yields while controlling for other potential determinants of productivity. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Regression Strategy
+
+To control for the highly non-linear nature of some of these relationships, most variables of interest are applied with cubic regression splines within a Generalized Additive Model (GAM) [@wood2017generalized]. These have a cubic spline basis defined by a modest sized set of knots spread evenly through the co-variate values. They are penalized by the conventional integrated square second derivative cubic spline penalty, and will be denoted with s(,n) where n is the degree. 
+
+GAMs models are a simple extension of polynomial regression and generalized linear models (GLM). The primary difference between polynomial regression and GAMs is that GAMs uses smoothed functions for at least some of our covariates (X), as represented here by $f(x)$. This simple addition will allow for a non-linear relationship between X and y, without imposing a functional form a priori (for instance a squared polynomial, or log-linear). This has a number of critical benefits, most importantly, the non-linear form in GAMs should match that of the underlying data generating process, this in turn provides more accurate estimates of marginal effects and better accuracy in out-of-sample prediction. 
+
+GAMs models take a familiar functional form:
+
+$$y = b_0 + X  +f(x_1)+...+f(x_p)+ \epsilon$$
+
+Where $y$ is our target variable, $b_0$ is the intercept, $X$ is a vector of linear covariates, $f(x_p)$ defines some basis of non-linear functions, and $\epsilon$ is the error term. This basis can simply be a polynomial one, for instance:
+
+$$f(x) = \gamma_0+\gamma_1x^1+\gamma_2x^2+...+\gamma_nx^n+\epsilon$$
+
+In this paper, we use a cubic spline basis to capture non-linear terms:
+
+$$f(x) = \sum_{j=1}^{n}\beta_j(x)\gamma_j+\epsilon $$
+
+Where $\beta_j$ cubic spline basis function.  Estimation is carried out by penalized maximum likelihood, where there is a penalty for over-fitting (creating wiggly lines) the data [^gam]. Overall, GAMs provides a simple extension to typical modeling approaches that more meaningfully captures non-linear relationships, and increases model accuracy. 
+
+ 
+[^gam]: A good description of GAMs and their relationship with OLS and non-linear regression can be found here: https://m-clark.github.io/generalized-additive-models/introduction.html
+
+
+
+
+
+
+
+
+
+
+
+
+## GAMS Tutorial {#gams}
+### Setting up the problem
+
+Lets try a simple example. First, let’s create a data frame and fill it with some simulated data with an obvious non-linear trend and compare how well some models fit to that data. The following example is pulled from [here](http://environmentalcomputing.net/intro-to-gams/).
+
+```{r}
+library(ggplot2)
+
+x <- seq(0, pi * 2, 0.1)
+sin_x <- sin(x)
+y <- sin_x + rnorm(n = length(x), mean = 0, sd = sd(sin_x / 2))
+Sample_data <- data.frame(y,x)
+```
+
+```{r}
+ggplot(Sample_data, aes(x, y)) + geom_point()
+```
+
+Try fitting a normal linear model:
+
+```{r}
+lm_y <- lm(y ~ x, data = Sample_data)
+summary(lm_y)
+```
+
+and plotting the fitted line with data using geom_smooth in ggplot
+
+```{r}
+ggplot(Sample_data, aes(x, y)) + geom_point() + geom_smooth(method = lm)
+```
+
+Looking at the plot or summary(lm_y), you might think the model fits nicely, but look at the residual plot – eek!
+
+```{r}
+plot(lm_y, which = 1)
+```
+
+Clearly, the residuals are not evenly spread across values of $x$, and we need to consider a better model.
+
+### Running the Analysis
+Before we consider a GAM, we need to load the package `mgcv` – the choice for running GAMs in R.
+
+```{r  message=FALSE, warning=FALSE}
+library(mgcv)
+```
+
+To run a GAM, we use:
+```{r}
+gam_y <- gam(y ~ s(x), method = "REML")
+```
+
+To extract the fitted values, we can use `predict` just like normal:
+
+
+```{r}
+x_new <- seq(0, max(x), length.out = 100)
+y_pred <- predict(gam_y, data.frame(x = x_new))
+```
+
+But for simple models, we can also utilise the `method =` argument in `geom_smooth`, specifying the model formula.
+
+```{r}
+ggplot(Sample_data, aes(x, y)) + geom_point() + geom_smooth(method = "gam", formula = y ~s(x))
+```
+
+You can see the model is better fit to the data, but always check the diagnostics.
+`check.gam` is quick and easy to view the residual plots.
+
+```{r}
+par(mfrow = c(2,2))
+gam.check(gam_y)
+```
+
+Using `summary` with the model object will give you the significance of the smooth term (along with any parametric terms, if you’ve included them), along with the variance explained. In this example, a pretty decent fit. The ‘edf’ is the estimated degrees of freedom – essentially, the larger the number, the more wiggly the fitted model. Values of around 1 tend to be close to a linear term. You can read about penalisation and shrinkage for more on what the edf reflects.
+
+```{r}
+summary(gam_y)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Present Value of Interventions
+To calculate the total costs and benefits of lime and chemical fertilizers it is critical to note that fertilizers require annual applications, while lime is only applied once every `r english(pv_years)` years. Fertilizer applications therefore need to be thought of as a repeated costs over a five year period, the present value of these costs therefore must be calculated.
+
+### Current Cost of Future Lime and Fertilizer Expenditures
+The present value of a future cost can be calculated using a few pieces of information: 1) the cost paid each year, 2) the discount rate, and whether or not the cost is incurred at the beginning or end of the year. Here we assume that that annual costs of fertilizer remain constant at `r fertilizer_P_kg` birr per kilogram. Fertilizers will be applied at a rate equal to the estimated yield benefits of a single lime application. We also assume a discount rate of 15%, which accounts for the typical rate of return of an alternative investment, and we assume the costs are incurred at the beginning of each planting season. 
+
+The present value (cost) of a series of future expenditures is as follows: `r F2=Formula_number`  `r Formula_number=Formula_number+1`
+
+(`r paste(F2)`)
+$$\ PV=\sum_{t=0}^{T}FV \frac{1}{(1+i)^t}$$
+
+In this case, PV is the present value of future expenditures, FV is the annual cost of fertilizer, *i* is the discount rate, and *T* is the number of years payments are made. As such we can estimate the present value of applications of lime and fertilizer required to obtain the same yield increase (qq/ha) in wheat yields estimated above.
+

@@ -1,0 +1,37 @@
+# Introduction {#intro}
+
+`r Table_number=1`
+
+Over decades of intensive utilization, small-scale farmers in Africa have removed large quantities of nutrients from their soils without sufficient inputs to replenish them.  Ethiopia, holds a substantial proportion of the Horn's best croplands. However, the natural characteristics, intensive use and fertilization of many of Ethiopia's lands have lead to acidification. This, along side of loss of topsoil, creates a challenging environment for the region to increase their yields and food supply. In this paper, we look into the effects of soil acidification on wheat, and barley production between 2010 and 2016. In particular, we explore whether farmers would benefit from the application of lime to increase yields in comparison to gain through traditional nitrogen fertilizers.
+
+Soils become acidic when basic elements such as calcium, magnesium, sodium and potassium held by soil colloids are replaced by hydrogen ions. Soils formed under conditions of high annual rainfall are generally more acidic than are soils formed under more arid conditions.  Additionally, repetitive and intensive use of ammonium-based (urea, ammonium phosphates) fertilizers and manure can further promote acidification. The impact of N-based fertilizers is case dependent but can increase acidity if the N is lost to leaching. At least one research group suggests that for every 1 kg of urea applied nearly 1.8 kg of calcium carbonate is required to neutralize the treated soil. This *induced* acidification is likely one contributor to farmland abandonment in Ethiopia's more marginal croplands.
+
+Acidification has a number of direct and indirect effects on plant health and development. Correcting soil acidity through the use of lime is the foundation of a good soil fertility program. Maintaining proper soil pH has a variety of primary and secondary benefits including critically, increasing yields and the stimulation of microbial activity. In some experimental wheat plots, lime application can increase root length density by >100 percent and yields by up to 200 percent. Most varieties of wheat grow best in soils with a pH ranging from 6 to 7, with 6.5 often mentioned as the target level. Optimal ranges for barley and corn range from 5.5 to 7.
+
+ 
+*Table* `r paste(Table_number)`*: Benefits of increasing pH in acidic soils*`r benetable =Table_number; Table_number =Table_number+1 `
+
+
+```{r benefits table, echo=FALSE, asis=T}
+bene = data.frame(`pH Change` = c('6.1 -> 6.5',
+                                  '5.6 -> 6.0',
+                                  '5.1 -> 5.5',
+                                  '<5.1'),
+                  'Effect' = c('Improve soil structure, reduce crusting, and reduce power need for tillage',
+                               'Increase soil microbial activity; increase rhizome health for nitrogen-fixation \n and other mycorrhizal assisted crops (legumes and barley); \nincrease plant nutrient availability;',
+                               'Reduce aluminum, H+, and manganese toxicity;',
+                               'Few crops can produce if not limed'
+                               ))
+names(bene) = c('pH Change','Effect')
+autofit(flextable(bene)   ) %>% width(j=2,5) %>% border_inner_h(border = std_border ,part='body')  
+
+
+
+ 
+```
+
+Areas with strongly acidic soils can  have significant problems with mineral toxicity, as aluminum (Al) and Manganese (Mn) can stunt healthy plant development [@montana]. In many areas the primary growth-limiting factor in acidic soils is aluminum toxicity [@froese2015]. Acidity also slows the mineralization of organic nitrogen (N) and reduces the availability of phosphorus (P), both of which are critical for plant growth and yields [@montana].  Additionally with acidity, critical elements such as calcium, magnesium, sodium, and potassium are replaced with hydrogen ions. Essentially H+ ions take up the 'parking spots' generally available to important nutrients [@montana]. Although Ethiopia has recently tried addressing low yields by emphasizing blended fertilizers that include many of these nutrients, little has been done to address the growing problem of soil acidity.  
+
+Liming materials contain calcium and/or magnesium in forms, which when dissolved, will neutralize soil acidity. Not all materials containing calcium and magnesium are capable of reducing soil acidity, and careful attention should be placed on monitoring the effectiveness of these materials. Calcium hydroxide is a strong base and reacts with $CO_2$ and $H_20$ in the soil, yielding bicarbonate ($HC0_3^-$) and hydroxide ($OH^-$). These take $H^+$ and Al (acid-forming cations) out of solution, and thereby neutralize soil acidity [@montana]. 
+
+In this report we evaluate the impact of acidic soils on the productivity of wheat, and barley for Ethiopia's major growing regions. We use agricultural data and measurements of actual soil pH to estimate it's impact on wheat, and barley yields, while controlling for a variety of other factors. We use this analysis to complete a cost-benefit analysis comparing the use of chemical fertilizers and lime to address the loss in yields found in acidic and highly acidic soils (pH of < 6.5 and <5.5 respectively). Specifically, we evaluate the quantity and cost of the annual fertilizer applications required to obtain the same productivity gains from a single lime application every  `r english(pv_years)` years. 

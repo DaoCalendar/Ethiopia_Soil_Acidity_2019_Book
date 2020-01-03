@@ -1,0 +1,142 @@
+--- 
+title: "Estimating Acid Soil Effects on Cereal Crop Productivity in Ethiopia: A Digital Handbook "
+author: "Michael Mann, James Warner, Chilot Tizale, Jordan Chamberlin"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+
+# Index {-}  
+
+The objective of this digital handbook is to provide insight into the methodology and outcomes of our paper "Estimating acid soil effects on cereal crop productivity in Ethiopia: A prototype for enhancing crop management". 
+
+- **Chapter 1:** [Introduction](#intro)
+- **Chapter 2:** [Data](#data)
+- **Chapter 3:** [Methods](#methods)
+- **Chapter 4:** [Findings](#findings)
+- **Chapter 5:** [Conclusions](#conclusions)
+
+
+***
+
+
+**Tutorials**
+
+We provide a small set of tutorials to help provide insight into the methods used in this paper.
+
+- **Tutorial 1:** [GAMS Tutorial](#gams)
+
+
+***
+
+
+**Policy Maps**
+
+To help guide agricultural interventions we provide a set of maps. These can be used to help better targeting of liming and fertilizer interventions. 
+
+- **Maps 1:** [Local Estimates](#local)
+
+
+```{r Libraries, message=FALSE, warning=FALSE, include=FALSE}
+library(sf)
+library(broom)
+library(car)
+library(raster)
+library(readstata13)
+library(dplyr)
+library(plm)
+library(splines2)
+require(stats)
+library(splines)
+library(ggplot2)
+library(reshape2)
+library(stars)
+library(pdp)
+library(pander)
+library(caret)
+library(FinCal)
+library(tidyr)
+library(automap)
+library(flextable)
+library(officer)
+library(magrittr)
+library(rms)
+library(tidyselect)
+library(english)
+library(readstata13)
+library(tmap)    # for static and interactive maps
+library(leaflet) # for interactive maps
+library(mapview) # for interactive maps
+
+# set up numbering for figures/graphs etc
+Table_number = 1
+Figure_number = 1
+Formula_number = 1
+Foot_number = 1
+
+
+knitr::opts_chunk$set(
+  echo = F,
+  message = F,
+  #collapse = TRUE,
+  warning = F
+  #comment = "#>", 
+  #eval = !is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))
+)
+
+# standard boarder for flextable
+std_border = fp_border(color="grey", width = 1)
+
+
+
+
+winsorize_x = function(x, cut = 0.01){
+  cut_point_top <- quantile(x, 1 - cut, na.rm = T)
+  #cut_point_bottom <- quantile(x, cut, na.rm = T)
+  i = which(x >= cut_point_top) 
+  x[i] = cut_point_top
+  #j = which(x <= cut_point_bottom) 
+  #x[j] = cut_point_bottom
+  return(x)
+}
+
+```
+
+
+```{r cost analysis assumptions, include=FALSE}
+# Here are some fertilizer prices by region for 2018.  I think we should use the Urea and NPS (the NPS has pretty much replaced DAP going forward).
+# 
+# Per 100 kgs (in Birr)
+#                     Dap       Urea     NPS
+# Tigray              1495      1327      1383
+# Amhara              1353      1229      1413
+# Oromia              1632      1272      1397
+# SNNP                1228      1157      1220
+
+
+price = 2000
+price_dollars = round(price/27.52)
+fertilizer_P_kg= 15 #00 # mean(1382,1413,1397,1220) /100   # 1500 set by james
+tons_lime_ha = 3
+total_lime_cost = price * tons_lime_ha
+
+# discounting parameters
+discount_rate = 0.15
+pv_years = 5
+
+# 1 million hectares of abandoned land to lime
+
+
+```
+
+
+```{r include=FALSE}
+# load results from conclusion to insert into abstract
+h_acidic_oph = readRDS('./Images/h_acidic_oph.rds')
+ph_oph = readRDS('./Images/PH_dataframe.rds')
+
+```
